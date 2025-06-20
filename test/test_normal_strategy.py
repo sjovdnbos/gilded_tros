@@ -6,7 +6,7 @@ class TestNormalItemUpdate(unittest.TestCase):
 
     def test_normal_item_update_before_sell_date(self):
         """
-        # Rule: every day, sell_in and quality decrease by 1
+        Every day, sell_in and quality decrease by 1
         """
         item = Item(name="Normal Item", sell_in=10, quality=20)
         strategy = NormalItemUpdate()
@@ -18,7 +18,7 @@ class TestNormalItemUpdate(unittest.TestCase):
 
     def test_normal_item_update_after_sell_date(self):
         """
-        # Rule: After sell date, quality decreases by 2
+        After sell date, quality decreases by 2
         """
         item = Item(name="Normal Item", sell_in=0, quality=20)
         strategy = NormalItemUpdate()
@@ -30,7 +30,7 @@ class TestNormalItemUpdate(unittest.TestCase):
 
     def test_normal_item_quality_never_negative(self):
         """
-        Rule: Quality should never be negative
+        Quality should never be negative
         """
         item = Item(name="Normal Item", sell_in=5, quality=0)
         strategy = NormalItemUpdate()
