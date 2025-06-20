@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-from gilded_tros import Item, GildedTros
+from src.models.item import Item
+from src.gilded_tros import GildedTros
 
 
 class GildedTrosTest(unittest.TestCase):
@@ -9,7 +10,7 @@ class GildedTrosTest(unittest.TestCase):
         items = [Item("foo", 0, 0)]
         gilded_tros = GildedTros(items)
         gilded_tros.update_quality()
-        self.assertEquals("fixme", items[0].name)
+        self.assertEqual("foo", items[0].name)
 
 
 if __name__ == '__main__':

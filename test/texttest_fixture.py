@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 
-from gilded_tros import *
+from src.models.item import Item
+from src.gilded_tros import GildedTros
 
 if __name__ == "__main__":
     print("AXXES CODE KATA - GILDED TROS")
