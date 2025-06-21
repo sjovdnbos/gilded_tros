@@ -3,13 +3,17 @@ from src.strategies.base import UpdateStrategy
 
 class BackstagePassUpdate(UpdateStrategy):
     def update(self, item: Item) -> None:
-        item.sell_in -= 1
+        """
+        Backstage passes increase in quality as the date approaches, 
+        but drop to 0 quality after the conference.
+        """
+        self.decrease_sell_in(item)
+
         if item.sell_in < 0:
             item.quality = 0
         else:
-            if item.quality < 50:
-                item.quality += 1
-                if item.sell_in < 10 and item.quality < 50:
-                    item.quality += 1   # increase by 2    
-                if item.sell_in < 5 and item.quality < 50:
-                    item.quality += 1   # increase by 3
+            self.increase_quality(item)
+            if item.sell_in < 10:
+                self.increase_quality(item)
+            if item.sell_in < 5:
+                self.increase_quality(item)
