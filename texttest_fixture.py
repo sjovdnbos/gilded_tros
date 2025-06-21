@@ -22,13 +22,13 @@ if __name__ == "__main__":
     ]
 
     days = 2
-    import sys
     if len(sys.argv) > 1:
         days = int(sys.argv[1]) + 1
     for day in range(days):
-        print("-------- day %s --------" % day)
-        print("name, sellIn, quality")
+        print(f" Day {day} ".center(60, "-"))
+        print(f"{'Name':40s} | {'sellIn':>7s} | {'quality':>7s}")
+        print("-" * 60)
         for item in items:
             print(item)
-        print("")
+        print("\n")
         GildedTros(items).update_quality()

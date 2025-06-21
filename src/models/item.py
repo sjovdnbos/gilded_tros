@@ -6,3 +6,6 @@ class Item:
 
     def __repr__(self):
         return "%s, %s, %s" % (self.name, self.sell_in, self.quality)
+
+    def __str__(self):
+        return "%-40s | %7d | %7d" % (self.name, self.sell_in, self.quality)
