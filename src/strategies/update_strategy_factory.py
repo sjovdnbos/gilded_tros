@@ -1,5 +1,5 @@
 
-from strategies.base import UpdateStrategy
+from src.strategies.base import UpdateStrategy
 from src.strategies.good_wine import GoodWineUpdate
 from src.strategies.legendary import LegendaryUpdate
 from src.strategies.backstage_pass import BackstagePassUpdate
