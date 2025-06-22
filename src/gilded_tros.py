@@ -5,7 +5,6 @@ from src.models.item import Item
 
 class GildedTros(object):
 
-
     def __init__(self, items: List[Item]) -> None:
         self.items = items
 

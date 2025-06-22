@@ -1,5 +1,5 @@
-from src.strategies.base import BaseUpdateStrategy
 from src.models.item import Item
+from src.strategies.base import BaseUpdateStrategy
 
 
 class NormalItemUpdateStrategy(BaseUpdateStrategy):

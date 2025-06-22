@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 
+import sys
 from src.models.item import Item
 from src.gilded_tros import GildedTros
 
