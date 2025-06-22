@@ -1,7 +1,7 @@
 from src.models.item import Item
-from src.strategies.base import UpdateStrategy
+from src.strategies.base import BaseUpdateStrategy
 
-class GoodWineUpdate(UpdateStrategy):
+class GoodWineUpdateStrategy(BaseUpdateStrategy):
     def update(self, item: Item) -> None:
         """
         Good wine items increase in quality as they age.

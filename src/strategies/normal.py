@@ -1,8 +1,8 @@
-from src.strategies.base import UpdateStrategy
+from src.strategies.base import BaseUpdateStrategy
 from src.models.item import Item
 
 
-class NormalItemUpdate(UpdateStrategy):
+class NormalItemUpdateStrategy(BaseUpdateStrategy):
     def update(self, item: Item) -> None:
         """
         Normal items degrade in quality by 1 each day.

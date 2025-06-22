@@ -1,6 +1,6 @@
 import unittest
 from src.models.item import Item
-from src.strategies.smelly import SmellyItemUpdate
+from src.strategies.smelly import SmellyItemUpdateStrategy
 
 class SmellyItemUpdateTests(unittest.TestCase):
 
@@ -9,7 +9,7 @@ class SmellyItemUpdateTests(unittest.TestCase):
         Smelly items lose 2 quality per day before sell_in date.
         """
         item = Item("Long Methods", sell_in=5, quality=10)
-        strategy = SmellyItemUpdate()
+        strategy = SmellyItemUpdateStrategy()
         strategy.update(item)
 
         self.assertEqual(item.sell_in, 4)
@@ -20,7 +20,7 @@ class SmellyItemUpdateTests(unittest.TestCase):
         Smelly items lose 4 quality per day after sell_in date.
         """
         item = Item("Ugly Variable Names", sell_in=0, quality=10)
-        strategy = SmellyItemUpdate()
+        strategy = SmellyItemUpdateStrategy()
         strategy.update(item)
 
         self.assertEqual(item.sell_in, -1)
@@ -31,7 +31,7 @@ class SmellyItemUpdateTests(unittest.TestCase):
         Smelly item quality should never go below 0.
         """
         item = Item("Duplicate Code", sell_in=1, quality=1)
-        strategy = SmellyItemUpdate()
+        strategy = SmellyItemUpdateStrategy()
         strategy.update(item)
 
         self.assertEqual(item.sell_in, 0)
@@ -42,7 +42,7 @@ class SmellyItemUpdateTests(unittest.TestCase):
         Smelly item quality should never go below 0, even after expiration.
         """
         item = Item("Duplicate Code", sell_in=-1, quality=3)
-        strategy = SmellyItemUpdate()
+        strategy = SmellyItemUpdateStrategy()
         strategy.update(item)
 
         self.assertEqual(item.sell_in, -2)

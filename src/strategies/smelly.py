@@ -1,7 +1,7 @@
 from src.models.item import Item
-from src.strategies.base import UpdateStrategy
+from src.strategies.base import BaseUpdateStrategy
 
-class SmellyItemUpdate(UpdateStrategy):
+class SmellyItemUpdateStrategy(BaseUpdateStrategy):
     def update(self, item: Item) -> None:
         """
         Smelly items degrade in quality by 2 each day.

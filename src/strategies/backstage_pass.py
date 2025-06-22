@@ -1,7 +1,7 @@
 from src.models.item import Item
-from src.strategies.base import UpdateStrategy
+from src.strategies.base import BaseUpdateStrategy
 
-class BackstagePassUpdate(UpdateStrategy):
+class BackstagePassUpdateStrategy(BaseUpdateStrategy):
     def update(self, item: Item) -> None:
         """
         Backstage passes increase in quality as the date approaches, 

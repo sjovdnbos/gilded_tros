@@ -1,6 +1,6 @@
 import unittest
 from src.models.item import Item
-from src.strategies.backstage_pass import BackstagePassUpdate
+from src.strategies.backstage_pass import BackstagePassUpdateStrategy
 
 
 class BackstagePassUpdateTests(unittest.TestCase):
@@ -10,7 +10,7 @@ class BackstagePassUpdateTests(unittest.TestCase):
         Should increase quality by 1 when SellIn > 10.
         """
         item = Item("Backstage passes", sell_in=15, quality=20)
-        strategy = BackstagePassUpdate()
+        strategy = BackstagePassUpdateStrategy()
         strategy.update(item)
 
         self.assertEqual(item.sell_in, 14)
@@ -21,7 +21,7 @@ class BackstagePassUpdateTests(unittest.TestCase):
         Should increase quality by 2 when SellIn is between 10 and 6.
         """
         item = Item("Backstage passes", sell_in=10, quality=20)
-        strategy = BackstagePassUpdate()
+        strategy = BackstagePassUpdateStrategy()
         strategy.update(item)
 
         self.assertEqual(item.sell_in, 9)
@@ -32,7 +32,7 @@ class BackstagePassUpdateTests(unittest.TestCase):
         Should increase quality by 3 when SellIn is between 5 and 1.
         """
         item = Item("Backstage passes", sell_in=5, quality=20)
-        strategy = BackstagePassUpdate()
+        strategy = BackstagePassUpdateStrategy()
         strategy.update(item)
 
         self.assertEqual(item.sell_in, 4)
@@ -43,7 +43,7 @@ class BackstagePassUpdateTests(unittest.TestCase):
         Should drop quality to 0 when SellIn is 0 or less.
         """
         item = Item("Backstage passes", sell_in=0, quality=25)
-        strategy = BackstagePassUpdate()
+        strategy = BackstagePassUpdateStrategy()
         strategy.update(item)
 
         self.assertEqual(item.sell_in, -1)
@@ -54,7 +54,7 @@ class BackstagePassUpdateTests(unittest.TestCase):
         item1 = Item("Backstage passes", sell_in=15, quality=50)
         item2 = Item("Backstage passes", sell_in=10, quality=49)
         item3 = Item("Backstage passes", sell_in=5, quality=48)
-        strategy = BackstagePassUpdate()
+        strategy = BackstagePassUpdateStrategy()
         strategy.update(item1)
         strategy.update(item2)
         strategy.update(item3)

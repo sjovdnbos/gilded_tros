@@ -1,6 +1,6 @@
 import unittest
 from src.models.item import Item
-from src.strategies.good_wine import GoodWineUpdate
+from src.strategies.good_wine import GoodWineUpdateStrategy
 
 class GoodWineUpdateTests(unittest.TestCase):
 
@@ -9,7 +9,7 @@ class GoodWineUpdateTests(unittest.TestCase):
         Should increase quality by 1 when quality is below 50.
         """
         item = Item("Good Wine", sell_in=10, quality=20)
-        strategy = GoodWineUpdate()
+        strategy = GoodWineUpdateStrategy()
         strategy.update(item)
 
         self.assertEqual(item.sell_in, 9)
@@ -20,7 +20,7 @@ class GoodWineUpdateTests(unittest.TestCase):
         Should cap quality at 50 when it is 50 or more.
         """
         item = Item("Good Wine", sell_in=5, quality=50)
-        strategy = GoodWineUpdate()
+        strategy = GoodWineUpdateStrategy()
         strategy.update(item)
 
         self.assertEqual(item.sell_in, 4)
@@ -31,7 +31,7 @@ class GoodWineUpdateTests(unittest.TestCase):
         Should cap quality at 50 when quality is 49.
         """
         item = Item("Good Wine", sell_in=3, quality=49)
-        strategy = GoodWineUpdate()
+        strategy = GoodWineUpdateStrategy()
         strategy.update(item)
 
         self.assertEqual(item.sell_in, 2)
@@ -42,7 +42,7 @@ class GoodWineUpdateTests(unittest.TestCase):
         Should increase quality by 2 after sell date, capped at 50.
         """
         item = Item("Good Wine", sell_in=0, quality=48)
-        strategy = GoodWineUpdate()
+        strategy = GoodWineUpdateStrategy()
         strategy.update(item)
 
         self.assertEqual(item.sell_in, -1)

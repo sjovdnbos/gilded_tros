@@ -2,8 +2,10 @@ from abc import ABC, abstractmethod
 from src.models.item import Item
 
 
-class UpdateStrategy(ABC):
-    """Base class for item update strategies."""
+class BaseUpdateStrategy(ABC):
+    """
+    Base class for item update strategies.
+    """
 
     MAX_QUALITY = 50
     MIN_QUALITY = 0
@@ -21,5 +23,7 @@ class UpdateStrategy(ABC):
         
     @abstractmethod
     def update(self, item: Item) -> None:
-        """Update the quality and sell_in of the given item."""
+        """
+        Update the quality and sell_in of the given item.
+        """
         pass

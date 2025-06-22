@@ -1,24 +1,24 @@
 
-from src.strategies.base import UpdateStrategy
-from src.strategies.good_wine import GoodWineUpdate
-from src.strategies.legendary import LegendaryUpdate
-from src.strategies.backstage_pass import BackstagePassUpdate
-from src.strategies.smelly import SmellyItemUpdate
-from src.strategies.normal import NormalItemUpdate
+from src.strategies.base import BaseUpdateStrategy
+from src.strategies.good_wine import GoodWineUpdateStrategy
+from src.strategies.legendary import LegendaryUpdateStrategy
+from src.strategies.backstage_pass import BackstagePassUpdateStrategy
+from src.strategies.smelly import SmellyItemUpdateStrategy
+from src.strategies.normal import NormalItemUpdateStrategy
 
 class UpdateStrategyFactory:
     """
     Factory class to create update strategies based on item names.
     """
     STRATEGY_MAPPING = {
-        "Good Wine": GoodWineUpdate,
-        "B-DAWG Keychain": LegendaryUpdate,
-        "Backstage passes for Re:Factor": BackstagePassUpdate,
-        "Backstage passes for HAXX": BackstagePassUpdate,
-        "Duplicate Code": SmellyItemUpdate,
-        "Long Methods": SmellyItemUpdate,
-        "Ugly Variable Names": SmellyItemUpdate,
+        "Good Wine": GoodWineUpdateStrategy,
+        "B-DAWG Keychain": LegendaryUpdateStrategy,
+        "Backstage passes for Re:Factor": BackstagePassUpdateStrategy,
+        "Backstage passes for HAXX": BackstagePassUpdateStrategy,
+        "Duplicate Code": SmellyItemUpdateStrategy,
+        "Long Methods": SmellyItemUpdateStrategy,
+        "Ugly Variable Names": SmellyItemUpdateStrategy,
     }
     @classmethod
-    def create_for(cls, item_name: str) -> UpdateStrategy:
-        return cls.STRATEGY_MAPPING.get(item_name, NormalItemUpdate)()
+    def create_for(cls, item_name: str) -> BaseUpdateStrategy:
+        return cls.STRATEGY_MAPPING.get(item_name, NormalItemUpdateStrategy)()
